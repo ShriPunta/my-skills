@@ -1,6 +1,7 @@
 ---
 name: analyze-pr
-description: Analyze a pull or merge request on any forge (GitHub, GitLab, Bitbucket, Azure DevOps, Gitea, Forgejo), producing a summary by area, new TODOs, test gaps, and review and CI state, then refreshing generated files and docs on its branch. Use when the user gives a PR or MR number, URL, or branch to analyze, summarize, or document.
+description: "Analyze a PR or MR on any forge: summary, TODOs, generated files, schema, tests, and overview updates."
+disable-model-invocation: true
 ---
 
 # Analyze PR

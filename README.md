@@ -61,15 +61,15 @@ done
 Start these yourself: the slash command in Claude Code, or your agent's skill menu. Harnesses that honour the user-only flag (Claude Code, Codex) never run them on their own.
 
 - [setup-repo-overview](skills/engineering/setup-repo-overview/SKILL.md) ([docs](docs/engineering/setup-repo-overview.md)): one-time setup for `repo-overview`: preset, location, optional index script, hooks or CI, and an agent pointer line (`/setup-repo-overview` in Claude Code).
+- [analyze-pr](skills/engineering/analyze-pr/SKILL.md) ([docs](docs/engineering/analyze-pr.md)): analyzes a PR or MR on GitHub, GitLab, Bitbucket, Azure DevOps, Gitea, or Forgejo into a by-area summary and follow-up list, then refreshes generated files and docs on its branch (hands overview updates to `repo-overview`); posts, commits, and pushes only on your yes (`/analyze-pr` in Claude Code).
 
 ### Model-invoked
 
 The agent reaches for these when your request matches.
 
 - [repo-overview](skills/engineering/repo-overview/SKILL.md) ([docs](docs/engineering/repo-overview.md)): keeps a modular repo overview (summary, author intent, optional sections, item groups, `INDEX.md` router) current as features land and before each PR.
-- [analyze-pr](skills/engineering/analyze-pr/SKILL.md) ([docs](docs/engineering/analyze-pr.md)): analyzes a PR or MR on GitHub, GitLab, Bitbucket, Azure DevOps, Gitea, or Forgejo into a by-area summary and follow-up list, then refreshes generated files and docs on its branch (hands overview updates to `repo-overview`); posts, commits, and pushes only on your yes.
 
-**How they fit:** run `setup-repo-overview` once; `repo-overview` keeps the overview current before each PR; `analyze-pr` calls `repo-overview` during PR review.
+**How they fit:** run `setup-repo-overview` once; `repo-overview` keeps the overview current before each PR; run the analyze-pr skill (`/analyze-pr` in Claude Code) on a PR, and it calls `repo-overview` for overview updates.
 
 ## repo-overview at a glance
 

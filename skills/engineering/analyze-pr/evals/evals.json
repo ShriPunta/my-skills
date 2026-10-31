@@ -3,7 +3,7 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "analyze PR 482 and write up what it changes",
+      "prompt": "/analyze-pr 482",
       "expected_output": "Detects GitHub from the origin remote, confirms gh auth, reads PR 482 metadata, diff, comments, and checks with gh, groups changes by the repo's own areas, runs every CHECKLIST.md section, reports summary, TODOs, test gaps, failing checks, and open threads, and asks before editing the PR description or committing.",
       "files": [],
       "expectations": [
@@ -16,7 +16,7 @@
     },
     {
       "id": 2,
-      "prompt": "can you go through https://gitlab.example.com/platform/billing/-/merge_requests/57 and tell me what's risky, then put a summary on the MR",
+      "prompt": "/analyze-pr https://gitlab.example.com/platform/billing/-/merge_requests/57 (tell me what's risky, then put a summary on the MR)",
       "expected_output": "Takes GitLab, host, project, and MR 57 from the URL, uses glab (with --hostname for the self-hosted host if not logged in), reads view, diff, comments, and CI status, flags risky changes such as destructive migrations or breaking API changes, drafts the summary, shows the exact glab command and text, and posts only after the user says yes.",
       "files": [],
       "expectations": [
@@ -29,7 +29,7 @@
     },
     {
       "id": 3,
-      "prompt": "summarize PR 12 for me, it's on our github repo. fyi I don't have gh on this laptop",
+      "prompt": "/analyze-pr 12 (it's on our github repo; fyi I don't have gh on this laptop)",
       "expected_output": "Tells the user how to install and log in to gh (brew install gh, gh auth login), then proceeds in git-only mode: fetches pull/12/head, diffs against the default branch, reports summary, TODOs, and test gaps, and states that description, comments, reviews, and CI status were unavailable.",
       "files": [],
       "expectations": [
@@ -42,11 +42,11 @@
     },
     {
       "id": 4,
-      "prompt": "I'm on the feature/invoice-export branch, PR is up. Analyze it and get the docs in shape before review.",
+      "prompt": "/analyze-pr (I'm on the feature/invoice-export branch, PR is up; get the docs in shape before review)",
       "expected_output": "Resolves the PR from the current branch, reads it, finds overview.config.json (or a '- Repo overview:' line in AGENTS.md), runs the repo-overview skill on docs made stale against the PR base, editing only those whose change is high level, regenerates any generated files whose inputs changed, reports, and asks before committing and pushing.",
       "files": [],
       "expectations": [
-        "Resolves the PR from the current branch without asking for a number",
+        "Invoked with no target, resolves the PR from the current branch without asking for a number",
         "Detects the repo overview from overview.config.json or the pointer line",
         "Runs the repo-overview skill, passing the PR base for --stale",
         "Does not edit overview docs by hand outside repo-overview",
@@ -55,7 +55,7 @@
     },
     {
       "id": 5,
-      "prompt": "analyze PR 9 and update whatever docs need it",
+      "prompt": "/analyze-pr 9 and update whatever docs need it",
       "expected_output": "Repo has no overview.config.json and no repo overview pointer line: analyzes PR 9, updates README or docs pages whose subject changed, suggests once that the user run the setup-repo-overview skill (/setup-repo-overview in Claude Code), and does not create an overview itself.",
       "files": [],
       "expectations": [

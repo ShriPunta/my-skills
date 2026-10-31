@@ -10,7 +10,7 @@ It works on GitHub (`gh`), GitLab (`glab`), Bitbucket (REST with a token), Azure
 
 ## When to reach for it
 
-The agent reaches for it on its own when you hand it a PR: "analyze PR 482", "what's risky in this MR?" with a URL, "get the docs in shape before review" while on the PR branch. It takes a number, a URL, or a branch; with none, it uses the current branch.
+You start it yourself: run the analyze-pr skill (`/analyze-pr` in Claude Code, or your agent's skill menu) with a PR number, URL, or branch; with none, it uses the current branch. On harnesses that honour the user-only flag (Claude Code, Codex), the agent never triggers it on its own, so nothing touches your PR until you ask.
 
 Run it before requesting review, so reviewers see a structured summary and the docs already match the code. Pair it with the setup-repo-overview skill (`/setup-repo-overview` in Claude Code) once per repo if you want the overview kept current as part of every PR.
 
