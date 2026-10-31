@@ -1,0 +1,18 @@
+{
+  "name": "shripunta",
+  "owner": {
+    "name": "Shridhar Puntambekar",
+    "url": "https://github.com/ShriPunta"
+  },
+  "metadata": {
+    "description": "Shridhar Puntambekar's agent skills."
+  },
+  "plugins": [
+    {
+      "name": "my-skills",
+      "source": "./",
+      "description": "Agent skills: repo-overview creates, updates, and checks a modular, indexed repo overview; setup-repo-overview prepares a repo for it; analyze-pr summarizes a PR or MR and updates its docs.",
+      "category": "engineering"
+    }
+  ]
+}

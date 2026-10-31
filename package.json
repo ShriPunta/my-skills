@@ -1,0 +1,14 @@
+{
+  "name": "my-skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shridhar Puntambekar's agent skills for Claude Code and other coding agents.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

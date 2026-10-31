@@ -1,0 +1,5 @@
+interface:
+  display_name: "Setup Repo Overview"
+  short_description: "Prepare a repo for repo-overview"
+policy:
+  allow_implicit_invocation: false

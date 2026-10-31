@@ -1,0 +1,3 @@
+interface:
+  display_name: "Analyze PR"
+  short_description: "Summarize a PR or MR and update its docs"
