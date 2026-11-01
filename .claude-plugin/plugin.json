@@ -1,5 +1,5 @@
 {
-  "name": "my-skills",
+  "name": "shri-skills",
   "version": "0.1.0",
   "description": "Shridhar Puntambekar's agent skills: repo-overview creates, updates, and checks a modular, indexed repo overview; setup-repo-overview prepares a repo for it; analyze-pr summarizes a PR or MR and updates its docs.",
   "author": {

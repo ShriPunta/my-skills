@@ -1,4 +1,4 @@
-# my-skills
+# shri-skills
 
 Shridhar Puntambekar's collection of agent skills. Each skill is a folder with a `SKILL.md`, optional reference files, and zero-dependency scripts.
 
@@ -12,14 +12,14 @@ Pick one route per agent. A plugin install and a copied install side by side giv
 
 ```
 /plugin marketplace add ShriPunta/my-skills
-/plugin install my-skills@shripunta
+/plugin install shri-skills@shripunta
 ```
 
 **Codex**
 
 ```sh
 codex plugin marketplace add ShriPunta/my-skills
-codex plugin add my-skills@shripunta
+codex plugin add shri-skills@shripunta
 ```
 
 Codex reads `.claude-plugin/` as a fallback marketplace manifest. Alternatively, use the manual route below; Codex loads skills from `~/.agents/skills/`.
@@ -28,7 +28,7 @@ Codex reads `.claude-plugin/` as a fallback marketplace manifest. Alternatively,
 
 ```sh
 copilot plugin marketplace add ShriPunta/my-skills
-copilot plugin install my-skills@shripunta
+copilot plugin install shri-skills@shripunta
 ```
 
 **Gemini CLI**

@@ -1,4 +1,4 @@
-# my-skills
+# shri-skills
 
 Agent skills published as a plugin (Claude Code, Codex, Copilot CLI), via `gemini skills install`, and via `npx skills`.
 

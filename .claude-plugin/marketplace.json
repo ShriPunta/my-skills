@@ -9,7 +9,7 @@
   },
   "plugins": [
     {
-      "name": "my-skills",
+      "name": "shri-skills",
       "source": "./",
       "description": "Agent skills: repo-overview creates, updates, and checks a modular, indexed repo overview; setup-repo-overview prepares a repo for it; analyze-pr summarizes a PR or MR and updates its docs.",
       "category": "engineering"
