@@ -1,0 +1,89 @@
+{
+  "skill_name": "repo-overview",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I already ran /setup-repo-overview on this Express + Postgres API (preset app). Build the repo overview.",
+      "expected_output": "Runs Init: derives facts from manifests, routes, CI, and git log; ingests README and CODEOWNERS; sends one batched interview with drafted guesses and skip instructions; writes 00-summary, 01-intent (source: author, confirmed date), 02-stack, 03-operations, roadmap, and features/<slug>.md items with required fields; leaves overview.config.json alone; no TODO(fill: markers remain; INDEX.md generated and --check passes.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "just added a stripe webhook handler under src/billing/webhooks/ and swapped our home-grown auth for Clerk. can you make sure the docs reflect that",
+      "expected_output": "Runs Update: reads INDEX.md, runs --stale --base origin/<default>, updates features/billing.md, the auth item, and 02-stack.md; leaves unrelated docs and 01-intent.md untouched; does not bump confirmed; regenerates INDEX.md and --check passes.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Before I cut the 2.0 release, is docs/overview still accurate? Tell me what's out of date, don't change anything yet.",
+      "expected_output": "Runs Check: runs --check and --stale, reports index drift, validation problems, stale docs with the commits that made each stale, author docs due for reconfirmation, and the count of open TODO(author) items; offers Update and edits nothing.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "Can you write up an overview of what this repo does so new contributors and agents can get oriented fast?",
+      "expected_output": "Finds no pointer line or overview.config.json; recommends the setup-repo-overview skill (/setup-repo-overview in Claude Code) and explains why; writes nothing unless the user asks to proceed now, in which case it uses the template config as is (lite, docs/overview/, no hooks, no pointer line).",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "This repo is one 50-line bash script that backs up my photos to a NAS. No setup done, just do the overview with defaults, I don't want to run anything else.",
+      "expected_output": "Proceeds with defaults: lite preset, docs/overview/ with the template config (no sections, no groups), 00-summary.md and 01-intent.md only, Where I left off section dropped; asks at most three intent questions in one message; no hooks, no pointer line; names the NAS by role and secrets by location only.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "Build the overview. FYI this is a Python/Django repo and there is no node on this machine or in CI.",
+      "expected_output": "Detects no Node; writes the overview files and hand-writes INDEX.md in the SCHEMA.md format with the hand-maintained header; for staleness compares git diff --name-only against each doc's paths; never installs Node or fails for its absence.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "I'm coming back to this side project after two years. Refresh the overview and help me remember where I was.",
+      "expected_output": "Runs Update with revival focus: reads INDEX.md and git history since the last overview commit, updates derived docs, asks why it paused, where it left off, and whether it is still worth it, fills the Where I left off section of 00-summary, and asks the author to reconfirm 01-intent before bumping confirmed.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "Build the overview. For the questions, skip all of them, I don't remember why I made this.",
+      "expected_output": "Writes derived docs normally; 01-intent.md contains a TODO(author): <question> line for every skipped question and no invented why, goals, or non-goals; confirmed key absent; reports the count of open author items; --check passes with TODO(author) as warnings only.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "This is the payments-ledger service, one of about 40 services in our org. Setup is done with the app preset plus 04-context. Build the overview.",
+      "expected_output": "Ingests CODEOWNERS and catalog-info.yaml before asking; fills 04-context with upstream and downstream services, contracts, owner, on-call, and SLOs (TODO(author) where unknown); sets owner from CODEOWNERS; describes infra by role; writes endpoint or feature items.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "Our TypeScript SDK needs an overview focused on the public API. Setup chose the library preset.",
+      "expected_output": "Writes api/<slug>.md items with stability (Experimental, Stable, Deprecated, Removed) and since fields, 03-release from the operations template, and asks about audience and stability policy; links existing API reference via related_docs instead of restating it.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "Build the overview for this ML research repo, setup picked the ml preset with experiments and datasets groups.",
+      "expected_output": "Writes experiments/<slug>.md items with Running, Concluded, or Abandoned status and a scalar or list metrics field, datasets items, 02-environment and 03-operations; asks for hypotheses, metric of record, and data licence; records skipped answers as TODO(author).",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "This is a 400k-line legacy monorepo with 60 packages, setup chose monorepo + large. Build the overview.",
+      "expected_output": "Agrees a first scope with the user, dispatches read-only subagents (if supported) returning digests of at most 300 words per area, writes packages items for the scoped areas, and a coverage section listing mapped and not-yet-mapped areas; respects CODEOWNERS ownership.",
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "ok the export-to-csv feature is done on this branch, I'm about to open the PR. anything I need to do for the docs?",
+      "expected_output": "Runs Update: reads the pointer line for root, script, and default branch; runs --stale --base origin/<default> (merge-base comparison); updates the docs it lists plus a new features/<slug>.md item for CSV export linked from related neighbours; leaves untouched areas alone; regenerates INDEX.md, runs --check, and reports the docs changed so they ride along in the PR.",
+      "files": []
+    },
+    {
+      "id": 14,
+      "prompt": "just fixed the off-by-one in invoice rounding and added a regression test, opening the PR now. does the overview need anything?",
+      "expected_output": "Runs Update: runs --stale --base origin/<default>, which lists features/billing.md because its paths changed; judges the bug fix and test do not alter what the overview describes, leaves billing.md unedited, and tells the user it was reviewed and judged current; does not write a changelog-style note; runs --check.",
+      "files": []
+    }
+  ]
+}

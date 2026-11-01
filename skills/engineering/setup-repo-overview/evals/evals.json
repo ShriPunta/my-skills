@@ -1,0 +1,83 @@
+{
+  "skill_name": "setup-repo-overview",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/setup-repo-overview",
+      "expected_output": "In a Node app repo with husky, GitHub Actions, and a root CLAUDE.md: locates the sibling repo-overview assets, explores, then sends one batched proposal of five decisions with recommendations (app preset, docs/overview/, script plus docs:overview scripts, husky pre-commit plus CI --check as a gate and --stale --base as a report, --strict offered as opt-in, optional .gitattributes, pointer line question). Writes nothing until confirmed; then writes config with preset, sections, and groups, copies the script, adds exactly one pointer line naming --stale --base origin/<default> to CLAUDE.md, checks the config parses without running --validate, and hands off to repo-overview Init.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "/setup-repo-overview this is a python service, we use pre-commit and keep docs in handbook/. AGENTS.md is our main instructions file, CLAUDE.md just says @AGENTS.md",
+      "expected_output": "Recommends the app preset with 04-context, proposes handbook/overview/, plain node commands, a pre-commit framework local hook running --check with --root handbook/overview, and on a yes for the pointer line edits AGENTS.md (canonical), leaving CLAUDE.md untouched.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "/setup-repo-overview I think I set this up a while ago but want to double-check and grab the latest script",
+      "expected_output": "Detects the existing config, script, package scripts, and pointer line; skips settled decisions; shows a diff between the repo script and the bundled one and offers to update; keeps config keys the user did not change and never duplicates the pointer line.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "/setup-repo-overview it's a 50 line script, keep it minimal",
+      "expected_output": "Recommends the lite preset, docs/overview/, no hooks (solo, no CI), and no pointer line unless asked; config is the template as is: preset lite, empty sections and groups.",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "/setup-repo-overview this is my dotfiles repo, I use stow",
+      "expected_output": "Recommends lite with the root at .overview/ and the script inside it (.overview/overview-index.mjs), never scripts/; adds the root to .stow-local-ignore when stowing the repo root; no hooks by default.",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "/setup-repo-overview python repo, no node installed anywhere",
+      "expected_output": "Detects no Node; offers the docker one-liner or a hand-maintained INDEX.md (recommended), with the hand-mode pointer line that compares git diff against doc paths; skips package.json scripts and Node-based hooks; never suggests npx.",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "/setup-repo-overview this repo is our Docusaurus documentation site",
+      "expected_output": "Detects docusaurus.config; recommends the docs preset with 02-publishing and a chapters group; puts the root outside the published docs/ folder (such as .overview/) because Docusaurus v3 MDX rejects the templates' HTML comments.",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "/setup-repo-overview this is a fork of an upstream project that we patch",
+      "expected_output": "Detects the upstream remote; recommends the fork modifier adding a divergence section whose paths list only carried-change files; interview extras cover why fork and sync policy.",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "/setup-repo-overview this is a GitHub template repo other teams copy",
+      "expected_output": "Detects template markers; recommends the template modifier adding a customize section and Placeholder status where useful.",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "/setup-repo-overview this is a regulated banking service, 12 engineers, CODEOWNERS in place",
+      "expected_output": "Recommends the app preset with 04-context plus the regulated modifier: no llm-prompt-context, denyPatterns in config, the optional CODEOWNERS line for the overview root, warns about INDEX.md merge conflicts and offers CI-only regeneration with PR jobs on --validate, and notes that subagent fan-out will be asked first.",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "/setup-repo-overview pnpm monorepo with 30 packages and turbo",
+      "expected_output": "Recommends the monorepo preset with a packages group, optionally the large modifier with a coverage section, per-package roots with repo-root-relative paths, and hooks and CI using --all.",
+      "files": []
+    },
+    {
+      "id": 12,
+      "prompt": "/setup-repo-overview my dotfiles are managed with yadm",
+      "expected_output": "Recommends lite with a hidden root such as ~/.config/overview/ and the script inside it; notes git commands go through yadm and the script runs inside yadm enter; no hooks by default.",
+      "files": []
+    },
+    {
+      "id": 13,
+      "prompt": "/setup-repo-overview team repo on GitHub, default branch is develop, we want reminders before pushing",
+      "expected_output": "Offers the plain git pre-commit hook regenerating the root INDEX, an advisory pre-push hook printing --stale --base origin/develop and exiting 0, and a GitHub Actions job with fetch-depth 0 running --check (gate) and --stale --base origin/${{ github.base_ref }} (report only, --strict opt-in); pointer line uses origin/develop.",
+      "files": []
+    }
+  ]
+}
