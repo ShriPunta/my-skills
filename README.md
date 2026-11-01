@@ -2,7 +2,7 @@
 
 Shridhar Puntambekar's collection of agent skills. Each skill is a folder with a `SKILL.md`, optional reference files, and zero-dependency scripts.
 
-Works with Claude Code, Codex, GitHub Copilot CLI, Gemini CLI, Cursor, and any agent that reads [Agent Skills](https://agentskills.io). The skills are plain markdown; the optional index script needs Node 18+, and everything works without it.
+Works with Claude Code, Codex, GitHub Copilot CLI, Gemini CLI, Antigravity, Cursor, and any agent that reads [Agent Skills](https://agentskills.io). The skills are plain markdown; the optional index script needs Node 18+, and everything works without it.
 
 ## Install
 
@@ -36,6 +36,18 @@ copilot plugin install shri-skills@shripunta
 ```sh
 gemini skills install https://github.com/ShriPunta/my-skills.git --path skills/engineering
 ```
+
+**Antigravity**
+
+```sh
+git clone https://github.com/ShriPunta/my-skills.git
+mkdir -p ~/.gemini/antigravity/skills
+for s in repo-overview setup-repo-overview analyze-pr; do
+  ln -s "$PWD/my-skills/skills/engineering/$s" ~/.gemini/antigravity/skills/$s
+done
+```
+
+That path is global. For one workspace, link into `<workspace>/.agent/skills/` instead. Or run `npx skills@latest add ShriPunta/my-skills` and choose Antigravity.
 
 **Any other agent** (via [skills](https://www.npmjs.com/package/skills); choose your agent when asked):
 
